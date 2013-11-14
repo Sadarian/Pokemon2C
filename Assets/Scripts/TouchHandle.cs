@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class TouchHandle : MonoBehaviour
 {
-	private const float DISTANCE = 25f;
+	private const float DISTANCE = 45f;
 	public List<dfButton> activeCombination = new List<dfButton>();
 
 	// Use this for initialization
@@ -40,9 +40,9 @@ public class TouchHandle : MonoBehaviour
 	public void OnMouseUp(dfControl control, dfMouseEventArgs mouseEvent)
 	{
 		//Debug.Log("Mouse Up!");
-		if (activeCombination.Count > 0)
+		if (activeCombination.Count == 4)
 		{
-			GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().Attack(activeCombination);
+			GameObject.FindGameObjectWithTag("GameController").GetComponent<Combat>().Attack(activeCombination);
 			foreach (dfButton button in activeCombination)
 			{
 				button.State = dfButton.ButtonState.Default;
